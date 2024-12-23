@@ -2,16 +2,48 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<title>早押しボタン</title>
+	<style>
+html, body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#canvas {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#button {
+    width: 60%;
+    height: 60%;
+    margin: 20%;
+    padding: 20%;
+}
+    </style>
 </head>
 <body>
-<button id="btn-sp-start">Touch!</button>
+	<button id="button">音声の再生を許可する</button>
+	<canvas id="canvas"></canvas>
 </body>
 <script type="text/javascript">
-const btnSPstart = document.querySelector('#btn-sp-start');
-btnSPstart.addEventListener('touchstart', () => {
-  alert('ボタンがタップされました！');
+audio = new Audio('push.mp3');
+const button = document.querySelector('#button');
+const canvas = document.querySelector('#canvas');
+button.addEventListener('touchstart', () => {
+	button.style.display = 'none';
+	canvas.style.display = 'block';
+});
+canvas.addEventListener('touchstart', () => {
+    audio.play();
+    let d = new Date();
+    alert(`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`);
+    audio = new Audio(audio.src);
 });
 </script>
 </html>
