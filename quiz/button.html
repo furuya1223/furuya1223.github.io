@@ -42,8 +42,11 @@ button.addEventListener('touchstart', () => {
 canvas.addEventListener('touchstart', () => {
     audio.play();
     let d = new Date();
-    alert(`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`);
-    audio = new Audio(audio.src);
+    // alert(`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`);
+    text = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`;
+    button.textContent = text;
+	button.style.display = 'block';
+	canvas.style.display = 'none';
 });
 </script>
 </html>
